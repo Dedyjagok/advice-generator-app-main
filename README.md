@@ -35,7 +35,15 @@ Users should be able to:
 ### Links
 
 - **Solution URL:** [GitHub Repository](https://github.com/Dedyjagok/advice-generator-app)
-- **Live Site URL:** [Live Site](https://dedyjagok.github.io/advice-generator-app/)
+
+
+### Deployment
+
+This project is deployed using Vercel. Vercel is a cloud platform for static sites and Serverless Functions that fits perfectly with the JAMstack workflow. It provides an easy way to deploy your projects with a simple command.
+
+To view the live site, visit the following link:
+
+- **Live Site URL:** [Live Site](https://advice-generator-app-main-sandy.vercel.app/)
 
 ---
 
