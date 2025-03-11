@@ -1,0 +1,135 @@
+:root {
+    --light-cyan: hsl(193, 38%, 86%);
+    --neon-green: hsl(150, 100%, 66%);
+    --grayish-blue: hsl(217, 19%, 38%);
+    --dark-grayish-blue: hsl(217, 19%, 24%);
+    --dark-blue: hsl(218, 23%, 16%);
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Manrope', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--dark-blue);
+    padding: 1rem;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 540px;
+    margin-bottom: 2rem;
+  }
+  
+  .advice-card {
+    background-color: var(--dark-grayish-blue);
+    border-radius: 15px;
+    padding: 3rem 2rem 4.5rem;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+  
+  .advice-id {
+    color: var(--neon-green);
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+  
+  .advice-text {
+    color: var(--light-cyan);
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 2.5rem;
+    line-height: 1.4;
+    animation-duration: 1s;
+  }
+  
+  .divider {
+    height: 16px;
+    background-image: url("data:image/svg+xml,%3Csvg width='444' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath fill='%234F5D74' d='M0 8h196v1H0zM248 8h196v1H248z'/%3E%3Cg transform='translate(212)' fill='%23CEE3E9'%3E%3Crect width='6' height='16' rx='3'/%3E%3Crect x='14' width='6' height='16' rx='3'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  .dice-btn {
+    position: absolute;
+    bottom: -32px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: var(--neon-green);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 30px rgba(82, 255, 168, 0.5);
+  }
+  
+  .dice-btn:hover {
+    box-shadow: 0 0 40px rgba(82, 255, 168, 0.9);
+    transform: translateX(-50%) rotate(45deg);
+  }
+  
+  .dice-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+  
+  footer {
+    color: var(--light-cyan);
+    font-size: 14px;
+    text-align: center;
+    margin-top: auto;
+    line-height: 1.6;
+}
+
+footer a {
+    color: var(--neon-green);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+footer a:hover {
+    text-decoration: underline;
+    opacity: 0.8;
+}
+
+footer p {
+    margin-bottom: 5px;
+}
+  
+  .fade-in {
+    animation: fadeIn 1s;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @media (max-width: 600px) {
+    .advice-card {
+      padding: 2rem 1.5rem 4rem;
+    }
+    
+    .advice-text {
+      font-size: 22px;
+    }
+  }

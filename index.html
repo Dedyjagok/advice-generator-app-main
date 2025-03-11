@@ -1,0 +1,233 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frontend Mentor | Advice generator app</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+  <lnk rel="stylesheet" href="style/style.css">
+  
+  <style>
+    :root {
+      --light-cyan: hsl(193, 38%, 86%);
+      --neon-green: hsl(150, 100%, 66%);
+      --grayish-blue: hsl(217, 19%, 38%);
+      --dark-grayish-blue: hsl(217, 19%, 24%);
+      --dark-blue: hsl(218, 23%, 16%);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Manrope', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--dark-blue);
+      padding: 1rem;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 540px;
+      margin-bottom: 2rem;
+    }
+    
+    .advice-card {
+      background-color: var(--dark-grayish-blue);
+      border-radius: 15px;
+      padding: 3rem 2rem 4.5rem;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .advice-id {
+      color: var(--neon-green);
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+    
+    .advice-text {
+      color: var(--light-cyan);
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 2.5rem;
+      line-height: 1.4;
+      animation-duration: 1s;
+    }
+    
+    .divider {
+      height: 16px;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    
+    .divider-desktop {
+      display: block;
+      background-image: url('./images/pattern-divider-desktop.svg');
+    }
+    
+    .divider-mobile {
+      display: none;
+      background-image: url('./images/pattern-divider-mobile.svg');
+    }
+    
+    .dice-btn {
+      position: absolute;
+      bottom: -32px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background-color: var(--neon-green);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 30px rgba(82, 255, 168, 0.5);
+    }
+    
+    .dice-btn:hover {
+      box-shadow: 0 0 40px rgba(82, 255, 168, 0.9);
+      transform: translateX(-50%) rotate(45deg);
+    }
+    
+    .dice-btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+    
+    .attribution {
+      color: var(--light-cyan);
+      font-size: 11px;
+      text-align: center;
+      margin-top: 2rem;
+      line-height: 1.6;
+    }
+    
+    .attribution a {
+      color: var(--neon-green);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .attribution a:hover {
+      text-decoration: underline;
+      opacity: 0.8;
+    }
+    
+    .fade-in {
+      animation: fadeIn 1s;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @media (max-width: 600px) {
+      .advice-card {
+        padding: 2rem 1.5rem 4rem;
+      }
+      
+      .advice-text {
+        font-size: 22px;
+      }
+      
+      .divider-desktop {
+        display: none;
+      }
+      
+      .divider-mobile {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="advice-card">
+      <span class="advice-id">ADVICE #<span id="advice-number">117</span></span>
+      <p id="advice" class="advice-text">Click the button below to get some advice</p>
+      <div class="divider divider-desktop"></div>
+      <div class="divider divider-mobile"></div>
+      <button id="getAdviceBtn" class="dice-btn" aria-label="Get Advice">
+        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 0H4a4.005 4.005 0 0 0-4 4v16a4.005 4.005 0 0 0 4 4h16a4.005 4.005 0 0 0 4-4V4a4.005 4.005 0 0 0-4-4ZM7.5 18a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm0-9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm4.5 4.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm4.5 4.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm0-9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z" fill="#202733"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="https://github.com/Dedyjagok" target="_blank">Dedy Hutahaean Putra</a>.
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const adviceText = document.getElementById('advice');
+      const adviceNumber = document.getElementById('advice-number');
+      const adviceButton = document.getElementById('getAdviceBtn');
+
+      // Function to fetch new advice
+      function fetchAdvice() {
+        // Show loading state
+        adviceText.textContent = "Loading advice...";
+        adviceButton.disabled = true;
+        
+        fetch('https://api.adviceslip.com/advice')
+          .then(response => {
+              if (!response.ok) {
+                  throw new Error('Network response was not ok');
+              }
+              return response.json();
+          })
+          .then(data => {
+              adviceNumber.textContent = data.slip.id;
+              adviceText.textContent = `"${data.slip.advice}"`;
+              
+              // Add a fade-in effect
+              adviceText.classList.add('fade-in');
+              setTimeout(() => {
+                  adviceText.classList.remove('fade-in');
+              }, 1000);
+          })
+          .catch(error => {
+              console.error('Error fetching advice:', error);
+              adviceText.textContent = "Could not load advice. Please try again.";
+          })
+          .finally(() => {
+              // Re-enable the button
+              adviceButton.disabled = false;
+          });
+      }
+
+      // Event listener for the button
+      adviceButton.addEventListener('click', function() {
+          fetchAdvice();
+      });
+      
+      // Load advice when page loads
+      fetchAdvice();
+    });
+  </script>
+  <script src="script/script.js"></script>
+</body>
+</html>
